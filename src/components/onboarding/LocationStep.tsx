@@ -36,13 +36,40 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
         <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
           Country *
         </label>
-        <input
+        <select
           {...register('country')}
-          type="text"
           id="country"
-          placeholder="e.g., United States"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-        />
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
+        >
+          <option value="">Select your country</option>
+          <option value="United States">United States</option>
+          <option value="Canada">Canada</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Australia">Australia</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Germany">Germany</option>
+          <option value="France">France</option>
+          <option value="Spain">Spain</option>
+          <option value="Italy">Italy</option>
+          <option value="Netherlands">Netherlands</option>
+          <option value="Belgium">Belgium</option>
+          <option value="Switzerland">Switzerland</option>
+          <option value="Austria">Austria</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Sweden">Sweden</option>
+          <option value="Norway">Norway</option>
+          <option value="Denmark">Denmark</option>
+          <option value="Finland">Finland</option>
+          <option value="Japan">Japan</option>
+          <option value="South Korea">South Korea</option>
+          <option value="Mexico">Mexico</option>
+          <option value="Brazil">Brazil</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Chile">Chile</option>
+          <option value="South Africa">South Africa</option>
+          <option value="India">India</option>
+          <option value="Other">Other</option>
+        </select>
         {errors.country && (
           <p className="mt-1 text-sm text-red-600">{errors.country.message}</p>
         )}
@@ -51,13 +78,13 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
       {/* State/Province */}
       <div>
         <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
-          State/Province (Optional)
+          State/Province/Region (Optional)
         </label>
         <input
           {...register('state')}
           type="text"
           id="state"
-          placeholder="e.g., California"
+          placeholder="e.g., California, Ontario, etc."
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
       </div>
