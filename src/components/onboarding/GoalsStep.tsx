@@ -16,6 +16,13 @@ const TIME_OPTIONS: TimeAvailable[] = ['10 min/day', '30 min/day', 'Weekends'];
 const GOAL_OPTIONS: Goal[] = ['Vegetables', 'Herbs', 'Flowers', 'Fruit Trees', 'Landscape Planning', 'All'];
 const EXPERIENCE_LEVELS: ExperienceLevel[] = ['Beginner', 'Intermediate', 'Advanced'];
 
+const CROP_CATEGORIES = [
+  'Root Crops',
+  'Leaf Crops',
+  'Flower Crops',
+  'Fruit Crops'
+];
+
 const COMMON_CROPS = [
   'Tomatoes', 'Lettuce', 'Carrots', 'Peppers', 'Cucumbers',
   'Beans', 'Squash', 'Kale', 'Basil', 'Strawberries',
@@ -55,7 +62,7 @@ export default function GoalsStep({ initialData, onNext, onBack }: GoalsStepProp
   const constraints = watch('constraints') || [];
 
   const addCustomCrop = () => {
-    if (customCrop && !topCrops.includes(customCrop) && topCrops.length < 5) {
+    if (customCrop && !topCrops.includes(customCrop)) {
       setValue('topCrops', [...topCrops, customCrop]);
       setCustomCrop('');
     }
@@ -90,7 +97,7 @@ export default function GoalsStep({ initialData, onNext, onBack }: GoalsStepProp
       {/* Time Available */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">
-          Time Available *
+          Time Available (Optional)
         </label>
         <div className="space-y-2">
           {TIME_OPTIONS.map((option) => (
@@ -113,7 +120,7 @@ export default function GoalsStep({ initialData, onNext, onBack }: GoalsStepProp
       {/* Goals */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">
-          Goals * (Select all that apply)
+          Goals (Optional - Select all that apply)
         </label>
         <div className="grid grid-cols-2 gap-3">
           {GOAL_OPTIONS.map((goal) => (
@@ -149,7 +156,7 @@ export default function GoalsStep({ initialData, onNext, onBack }: GoalsStepProp
       {/* Experience Level */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">
-          Experience Level *
+          Experience Level (Optional)
         </label>
         <div className="space-y-2">
           {EXPERIENCE_LEVELS.map((level) => (
@@ -172,20 +179,41 @@ export default function GoalsStep({ initialData, onNext, onBack }: GoalsStepProp
       {/* Top Crops */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">
-          Favorite Crops (Optional, up to 5)
+          Favorite Crops (Optional)
         </label>
-        <div className="flex flex-wrap gap-2 mb-3">
-          {COMMON_CROPS.filter(crop => !topCrops.includes(crop)).map((crop) => (
-            <button
-              key={crop}
-              type="button"
-              onClick={() => topCrops.length < 5 && setValue('topCrops', [...topCrops, crop])}
-              disabled={topCrops.length >= 5}
-              className="px-3 py-1 text-sm border border-green-300 text-green-700 rounded-full hover:bg-green-50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              + {crop}
-            </button>
-          ))}
+
+        {/* Crop Categories */}
+        <div className="mb-3">
+          <p className="text-xs text-gray-600 mb-2">Quick select by category:</p>
+          <div className="flex flex-wrap gap-2">
+            {CROP_CATEGORIES.filter(category => !topCrops.includes(category)).map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setValue('topCrops', [...topCrops, category])}
+                className="px-3 py-1 text-sm border-2 border-green-500 text-green-700 font-semibold rounded-full hover:bg-green-50"
+              >
+                + {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Individual Crops */}
+        <div className="mb-3">
+          <p className="text-xs text-gray-600 mb-2">Or select specific crops:</p>
+          <div className="flex flex-wrap gap-2">
+            {COMMON_CROPS.filter(crop => !topCrops.includes(crop)).map((crop) => (
+              <button
+                key={crop}
+                type="button"
+                onClick={() => setValue('topCrops', [...topCrops, crop])}
+                className="px-3 py-1 text-sm border border-green-300 text-green-700 rounded-full hover:bg-green-50"
+              >
+                + {crop}
+              </button>
+            ))}
+          </div>
         </div>
         {topCrops.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
@@ -206,25 +234,23 @@ export default function GoalsStep({ initialData, onNext, onBack }: GoalsStepProp
             ))}
           </div>
         )}
-        {topCrops.length < 5 && (
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={customCrop}
-              onChange={(e) => setCustomCrop(e.target.value)}
-              placeholder="Add custom crop..."
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomCrop())}
-            />
-            <button
-              type="button"
-              onClick={addCustomCrop}
-              className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200"
-            >
-              Add
-            </button>
-          </div>
-        )}
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={customCrop}
+            onChange={(e) => setCustomCrop(e.target.value)}
+            placeholder="Add custom crop..."
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+            onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomCrop())}
+          />
+          <button
+            type="button"
+            onClick={addCustomCrop}
+            className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200"
+          >
+            Add
+          </button>
+        </div>
       </div>
 
       {/* Constraints */}

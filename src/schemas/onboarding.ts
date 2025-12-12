@@ -22,10 +22,10 @@ export const climateSchema = z.object({
     'Semi-arid',
     'Mountain',
     'Other'
-  ]),
-  summerType: z.enum(['Hot-Dry', 'Hot-Humid', 'Mild', 'Short']),
-  winterType: z.enum(['Mild', 'Snowy', 'Rainy', 'Hard Freeze']),
-  rainPattern: z.enum(['Year-round', 'Wet Winters', 'Wet Summers', 'Monsoon', 'Very Dry']),
+  ]).optional(),
+  summerType: z.enum(['Hot-Dry', 'Hot-Humid', 'Mild', 'Short']).optional(),
+  winterType: z.enum(['Mild', 'Snowy', 'Rainy', 'Hard Freeze']).optional(),
+  rainPattern: z.enum(['Year-round', 'Wet Winters', 'Wet Summers', 'Monsoon', 'Very Dry']).optional(),
   lastSpringFrost: z.date().nullable().optional(),
   firstFallFrost: z.date().nullable().optional(),
 });
@@ -39,15 +39,15 @@ export const gardenSchema = z.object({
     'Greenhouse',
     'Balcony',
     'Food Forest'
-  ])).min(1, 'Select at least one growing space'),
-  sunExposure: z.enum(['Full Sun', 'Partial Sun', 'Shade']),
-  soilType: z.enum(['Clay', 'Sandy', 'Loam', 'Rocky', 'Unknown']),
-  waterAccess: z.array(z.enum(['Rainwater', 'Irrigation', 'Limited'])).min(1, 'Select at least one water source'),
+  ])).optional().default([]),
+  sunExposure: z.enum(['Full Sun', 'Partial Sun', 'Shade']).optional(),
+  soilType: z.enum(['Clay', 'Sandy', 'Loam', 'Rocky', 'Unknown']).optional(),
+  waterAccess: z.array(z.enum(['Rainwater', 'Irrigation', 'Limited'])).optional().default([]),
 });
 
 // Step 4: Goals & Time Schema
 export const goalsSchema = z.object({
-  timeAvailable: z.enum(['10 min/day', '30 min/day', 'Weekends']),
+  timeAvailable: z.enum(['10 min/day', '30 min/day', 'Weekends']).optional(),
   goals: z.array(z.enum([
     'Vegetables',
     'Herbs',
@@ -55,10 +55,10 @@ export const goalsSchema = z.object({
     'Fruit Trees',
     'Landscape Planning',
     'All'
-  ])).min(1, 'Select at least one goal'),
-  experienceLevel: z.enum(['Beginner', 'Intermediate', 'Advanced']),
-  topCrops: z.array(z.string()).max(5, 'Select up to 5 crops'),
-  constraints: z.array(z.string()).max(5, 'Select up to 5 constraints'),
+  ])).optional().default([]),
+  experienceLevel: z.enum(['Beginner', 'Intermediate', 'Advanced']).optional(),
+  topCrops: z.array(z.string()).default([]), // Removed max limit
+  constraints: z.array(z.string()).max(5, 'Select up to 5 constraints').default([]),
 });
 
 // Complete Profile Schema (combines all steps)

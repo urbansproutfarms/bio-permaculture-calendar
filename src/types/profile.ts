@@ -8,25 +8,25 @@ export interface UserProfile {
 
   // Climate
   hardinessZone?: string;
-  climateType: ClimateType;
-  summerType: SummerType;
-  winterType: WinterType;
-  rainPattern: RainPattern;
+  climateType?: ClimateType;
+  summerType?: SummerType;
+  winterType?: WinterType;
+  rainPattern?: RainPattern;
 
   // Frost Dates
   lastSpringFrost?: Date | null;
   firstFallFrost?: Date | null;
 
   // Garden Setup
-  growingSpace: GrowingSpace[];
-  sunExposure: SunExposure;
-  soilType: SoilType;
-  waterAccess: WaterAccess[];
+  growingSpace?: GrowingSpace[];
+  sunExposure?: SunExposure;
+  soilType?: SoilType;
+  waterAccess?: WaterAccess[];
 
   // Time & Goals
-  timeAvailable: TimeAvailable;
-  goals: Goal[];
-  experienceLevel: ExperienceLevel;
+  timeAvailable?: TimeAvailable;
+  goals?: Goal[];
+  experienceLevel?: ExperienceLevel;
 
   // Preferences
   topCrops: string[];

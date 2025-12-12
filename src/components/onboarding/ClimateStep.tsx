@@ -68,7 +68,7 @@ export default function ClimateStep({ initialData, onNext, onBack }: ClimateStep
       {/* Climate Type */}
       <div>
         <label htmlFor="climateType" className="block text-sm font-medium text-gray-700 mb-1">
-          Climate Type *
+          Climate Type (Optional)
         </label>
         <select
           {...register('climateType')}
@@ -88,7 +88,7 @@ export default function ClimateStep({ initialData, onNext, onBack }: ClimateStep
       {/* Summer Type */}
       <div>
         <label htmlFor="summerType" className="block text-sm font-medium text-gray-700 mb-1">
-          Summer Type *
+          Summer Type (Optional)
         </label>
         <select
           {...register('summerType')}
@@ -108,7 +108,7 @@ export default function ClimateStep({ initialData, onNext, onBack }: ClimateStep
       {/* Winter Type */}
       <div>
         <label htmlFor="winterType" className="block text-sm font-medium text-gray-700 mb-1">
-          Winter Type *
+          Winter Type (Optional)
         </label>
         <select
           {...register('winterType')}
@@ -128,7 +128,7 @@ export default function ClimateStep({ initialData, onNext, onBack }: ClimateStep
       {/* Rain Pattern */}
       <div>
         <label htmlFor="rainPattern" className="block text-sm font-medium text-gray-700 mb-1">
-          Rain Pattern *
+          Rain Pattern (Optional)
         </label>
         <select
           {...register('rainPattern')}
