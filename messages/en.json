@@ -1,0 +1,239 @@
+{
+  "common": {
+    "next": "Next",
+    "back": "Back",
+    "skip": "Skip",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "optional": "(Optional)",
+    "required": "(Required)",
+    "notSure": "Not sure",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "calendar": "Calendar",
+    "journal": "Journal",
+    "settings": "Settings"
+  },
+  "welcome": {
+    "title": "Welcome to BioPermaculture Calendar",
+    "subtitle": "Your personalized biodynamic gardening companion",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "onboarding": {
+    "title": "Set Up Your Garden Profile",
+    "subtitle": "We'll customize recommendations based on your location and goals",
+    "step": "Step {current} of {total}",
+    "location": {
+      "title": "Where are you gardening?",
+      "subtitle": "We'll use this to provide climate-specific guidance",
+      "country": "Country",
+      "state": "State/Province",
+      "city": "City",
+      "latitude": "Latitude",
+      "longitude": "Longitude",
+      "countryPlaceholder": "Select your country",
+      "statePlaceholder": "Enter your state",
+      "cityPlaceholder": "Enter your city",
+      "errors": {
+        "countryRequired": "Country is required"
+      }
+    },
+    "climate": {
+      "title": "Tell us about your climate",
+      "subtitle": "This helps us recommend the right plants and timing",
+      "hardinessZone": "USDA Hardiness Zone",
+      "climateType": "Climate Type",
+      "summerType": "Summer Type",
+      "winterType": "Winter Type",
+      "rainPattern": "Rain Pattern",
+      "lastSpringFrost": "Last Spring Frost",
+      "firstFallFrost": "First Fall Frost",
+      "climateTypes": {
+        "Mediterranean": "Mediterranean",
+        "HumidSubtropical": "Humid Subtropical",
+        "Oceanic": "Oceanic",
+        "Continental": "Continental",
+        "Tropical": "Tropical",
+        "Arid": "Arid",
+        "SemiArid": "Semi-arid",
+        "Mountain": "Mountain",
+        "Other": "Other"
+      },
+      "summerTypes": {
+        "HotDry": "Hot-Dry",
+        "HotHumid": "Hot-Humid",
+        "Mild": "Mild",
+        "Short": "Short"
+      },
+      "winterTypes": {
+        "Mild": "Mild",
+        "Snowy": "Snowy",
+        "Rainy": "Rainy",
+        "HardFreeze": "Hard Freeze"
+      },
+      "rainPatterns": {
+        "YearRound": "Year-round",
+        "WetWinters": "Wet Winters",
+        "WetSummers": "Wet Summers",
+        "Monsoon": "Monsoon",
+        "VeryDry": "Very Dry"
+      }
+    },
+    "garden": {
+      "title": "Tell us about your growing space",
+      "subtitle": "Understanding your garden setup helps personalize recommendations",
+      "hint": "Optional... skip anything you're not sure about. You can edit this later in Settings.",
+      "growingSpace": "Growing Space",
+      "growingSpaceHint": "(Optional - Select all that apply)",
+      "sunExposure": "Sun Exposure",
+      "soilType": "Soil Type",
+      "waterAccess": "Water Access",
+      "waterAccessHint": "(Optional - Select all that apply)",
+      "growingSpaces": {
+        "Containers": "Containers",
+        "RaisedBeds": "Raised Beds",
+        "InGround": "In-Ground",
+        "Greenhouse": "Greenhouse",
+        "Balcony": "Balcony",
+        "FoodForest": "Food Forest"
+      },
+      "sunExposures": {
+        "FullSun": "Full Sun (6+ hours direct)",
+        "PartialSun": "Partial Sun (3-6 hours)",
+        "Shade": "Shade (< 3 hours)",
+        "NotSure": "Not sure"
+      },
+      "soilTypes": {
+        "Clay": "Clay (heavy, holds water)",
+        "Sandy": "Sandy (light, drains fast)",
+        "Loam": "Loam (balanced, ideal)",
+        "Rocky": "Rocky",
+        "Unknown": "Unknown",
+        "NotSure": "Not sure"
+      },
+      "waterAccesses": {
+        "Rainwater": "Rainwater",
+        "Irrigation": "Irrigation",
+        "Limited": "Limited"
+      }
+    },
+    "goals": {
+      "title": "What are your gardening goals?",
+      "subtitle": "We'll tailor your calendar to match your interests",
+      "timeAvailable": "Time Available",
+      "goals": "Goals",
+      "goalsHint": "(Select all that apply)",
+      "experienceLevel": "Experience Level",
+      "topCrops": "Favorite Crops",
+      "topCropsHint": "Enter crops you'd like to grow",
+      "addCrop": "Add crop",
+      "constraints": "Constraints",
+      "constraintsHint": "(Select up to 5)",
+      "timeOptions": {
+        "10min": "10 min/day",
+        "30min": "30 min/day",
+        "Weekends": "Weekends"
+      },
+      "goalOptions": {
+        "Vegetables": "Vegetables",
+        "Herbs": "Herbs",
+        "Flowers": "Flowers",
+        "FruitTrees": "Fruit Trees",
+        "LandscapePlanning": "Landscape Planning",
+        "All": "All"
+      },
+      "experienceLevels": {
+        "Beginner": "Beginner",
+        "Intermediate": "Intermediate",
+        "Advanced": "Advanced"
+      },
+      "cropCategories": {
+        "RootCrops": "Root Crops",
+        "LeafCrops": "Leaf Crops",
+        "FlowerCrops": "Flower Crops",
+        "FruitCrops": "Fruit Crops"
+      },
+      "createCalendar": "Create My Calendar"
+    }
+  },
+  "dashboard": {
+    "title": "My Garden Dashboard",
+    "todaysTasks": "Today's Tasks",
+    "weekOverview": "Week Overview",
+    "moonPhase": "Moon Phase",
+    "biodynamicDay": "Biodynamic Day",
+    "seasonalMode": "Seasonal Mode",
+    "noTasks": "No tasks scheduled for today"
+  },
+  "calendar": {
+    "title": "Garden Calendar",
+    "monthView": "Month View",
+    "weekView": "Week View",
+    "dayView": "Day View",
+    "today": "Today",
+    "plantingActivities": "Planting Activities",
+    "maintenanceTasks": "Maintenance Tasks",
+    "harvestReady": "Ready to Harvest"
+  },
+  "journal": {
+    "title": "Garden Journal",
+    "newEntry": "New Entry",
+    "date": "Date",
+    "notes": "Notes",
+    "weather": "Weather",
+    "observations": "Observations",
+    "addPhoto": "Add Photo",
+    "saveEntry": "Save Entry"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "language": "Language",
+    "notifications": "Notifications",
+    "export": "Export Profile",
+    "import": "Import Profile",
+    "editProfile": "Edit Profile",
+    "languageSelector": "Select Language",
+    "advancedMode": "Advanced Mode",
+    "advancedModeDesc": "Show detailed biodynamic guidance and technical information",
+    "starterMode": "Starter Mode",
+    "starterModeDesc": "Simplified interface with basic guidance"
+  },
+  "biodynamic": {
+    "moonPhases": {
+      "New": "New Moon",
+      "WaxingCrescent": "Waxing Crescent",
+      "FirstQuarter": "First Quarter",
+      "WaxingGibbous": "Waxing Gibbous",
+      "Full": "Full Moon",
+      "WaningGibbous": "Waning Gibbous",
+      "LastQuarter": "Last Quarter",
+      "WaningCrescent": "Waning Crescent"
+    },
+    "dayTypes": {
+      "Root": "Root Day",
+      "Flower": "Flower Day",
+      "Leaf": "Leaf Day",
+      "Fruit": "Fruit Day"
+    },
+    "guidance": {
+      "Root": "Ideal for planting and tending root crops (carrots, beets, potatoes)",
+      "Flower": "Best for flowering plants (broccoli, cauliflower, ornamentals)",
+      "Leaf": "Perfect for leafy greens (lettuce, spinach, herbs)",
+      "Fruit": "Great for fruiting plants (tomatoes, peppers, squash)"
+    }
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "loadingFailed": "Failed to load data",
+    "saveFailed": "Failed to save changes",
+    "networkError": "Network error. Please check your connection.",
+    "tryAgain": "Try Again"
+  }
+}
