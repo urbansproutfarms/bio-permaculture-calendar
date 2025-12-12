@@ -29,8 +29,8 @@ export interface UserProfile {
   experienceLevel?: ExperienceLevel;
 
   // Preferences
-  topCrops: string[];
-  constraints: string[];
+  topCrops?: string[];
+  constraints?: string[];
 
   // Settings
   advancedMode: boolean;

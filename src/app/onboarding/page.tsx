@@ -41,9 +41,14 @@ export default function OnboardingPage() {
   };
 
   const handleFinalSubmit = () => {
-    // Create complete profile
+    // Create complete profile with defaults for optional fields
     const profile: UserProfile = {
       ...formData as any,
+      topCrops: formData.topCrops || [],
+      constraints: formData.constraints || [],
+      growingSpace: formData.growingSpace || [],
+      waterAccess: formData.waterAccess || [],
+      goals: formData.goals || [],
       advancedMode: false,
       createdAt: new Date(),
       updatedAt: new Date(),

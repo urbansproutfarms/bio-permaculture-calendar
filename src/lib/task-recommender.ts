@@ -143,7 +143,7 @@ function getBestCrops(
   // Filter by user's top crops if specified
   if (profile.topCrops && profile.topCrops.length > 0) {
     const userCrops = crops.filter(c =>
-      profile.topCrops.some(uc => c.toLowerCase().includes(uc.toLowerCase()))
+      profile.topCrops!.some(uc => c.toLowerCase().includes(uc.toLowerCase()))
     );
     if (userCrops.length > 0) {
       crops = userCrops;

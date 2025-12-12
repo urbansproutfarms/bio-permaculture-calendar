@@ -11,16 +11,15 @@ import { SeasonalMode } from '@/types/calendar';
  */
 export function inferSeasonalMode(profile: UserProfile, date: Date): SeasonalMode {
   const month = date.getMonth(); // 0-11
-  const location = profile.location;
-  const climate = profile.climate;
 
   // Adjust for hemisphere
-  const isNorthernHemisphere = (location.latitude ?? 0) >= 0;
+  const isNorthernHemisphere = (profile.latitude ?? 0) >= 0;
   const adjustedMonth = isNorthernHemisphere ? month : (month + 6) % 12;
 
-  // Consider climate zone
-  const isColdClimate = climate.zone && parseInt(climate.zone) <= 6;
-  const isWarmClimate = climate.zone && parseInt(climate.zone) >= 9;
+  // Consider climate zone (from hardiness zone)
+  const zone = profile.hardinessZone ? parseInt(profile.hardinessZone) : null;
+  const isColdClimate = zone !== null && zone <= 6;
+  const isWarmClimate = zone !== null && zone >= 9;
 
   // Determine mode based on adjusted month and climate
   if (adjustedMonth === 11 || adjustedMonth === 0 || adjustedMonth === 1) {
@@ -39,7 +38,7 @@ export function inferSeasonalMode(profile: UserProfile, date: Date): SeasonalMod
     return 'Transplanting';
   } else if (adjustedMonth === 6 || adjustedMonth === 7) {
     // Jul, Aug (Northern summer)
-    if (climate.avgSummerHigh && climate.avgSummerHigh > 85) {
+    if (profile.summerType === 'Hot-Dry' || profile.summerType === 'Hot-Humid') {
       return 'Heat Management';
     }
     return 'Succession Planting';
