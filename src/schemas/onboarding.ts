@@ -5,8 +5,16 @@ export const locationSchema = z.object({
   country: z.string().min(1, 'Country is required'),
   state: z.string().optional(),
   city: z.string().optional(),
-  latitude: z.number().optional(),
-  longitude: z.number().optional(),
+  latitude: z.preprocess((val) => {
+    if (val === '' || val === null || val === undefined) return undefined;
+    const num = Number(val);
+    return isNaN(num) ? undefined : num;
+  }, z.number().optional()),
+  longitude: z.preprocess((val) => {
+    if (val === '' || val === null || val === undefined) return undefined;
+    const num = Number(val);
+    return isNaN(num) ? undefined : num;
+  }, z.number().optional()),
 });
 
 // Step 2: Climate Schema
