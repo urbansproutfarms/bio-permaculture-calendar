@@ -3,7 +3,8 @@
  * Determines day types based on constellation positions
  */
 
-export type DayType = 'Root' | 'Leaf' | 'Flower' | 'Fruit';
+import { BiodynamicDayType } from '@/types/calendar';
+export type DayType = BiodynamicDayType; // Alias for compatibility
 
 /**
  * Calculate biodynamic day type for a given date

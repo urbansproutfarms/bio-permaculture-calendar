@@ -11,6 +11,7 @@ import { UserProfile } from '@/types/profile';
 import { BiodynamicDayType } from './biodynamic';
 import { MoonPhase } from './moon-phase';
 import { SeasonalMode } from './season-inference';
+import { PermacultureTip, PermacultureCategory } from '@/types/calendar';
 import { seedRandom } from './utils';
 
 export interface TaskRecommendation {
@@ -179,35 +180,35 @@ function shuffle<T>(array: T[], rng: () => number): T[] {
   return shuffled;
 }
 
-export function generatePermacultureTip(date: Date) {
-  const tips = [
+export function generatePermacultureTip(date: Date): PermacultureTip {
+  const tips: PermacultureTip[] = [
     {
-      category: 'Water Retention',
+      category: 'Water Retention' as PermacultureCategory,
       title: 'Mulch for Moisture',
       description: 'Apply 3-4 inches of organic mulch to reduce evaporation and keep soil cool. Wood chips, straw, or shredded leaves work great.'
     },
     {
-      category: 'Soil Building',
+      category: 'Soil Building' as PermacultureCategory,
       title: 'Chop and Drop',
       description: 'Cut back nitrogen-fixing plants and leave cuttings in place as mulch. This feeds soil organisms and builds fertility.'
     },
     {
-      category: 'Companion Planting',
+      category: 'Companion Planting' as PermacultureCategory,
       title: 'Three Sisters Garden',
       description: 'Plant corn, beans, and squash together. Corn provides structure, beans fix nitrogen, squash shades soil and deters pests.'
     },
     {
-      category: 'Pest Management',
+      category: 'Pest Management' as PermacultureCategory,
       title: 'Habitat for Beneficials',
       description: 'Plant flowers to attract predatory insects. Yarrow, dill, and fennel support lacewings and parasitic wasps.'
     },
     {
-      category: 'Landscape Design',
+      category: 'Landscape Design' as PermacultureCategory,
       title: 'Zone Planning',
       description: 'Place frequently-used plants close to your door (Zone 1). Less-visited areas can be farther away (Zones 2-5).'
     },
     {
-      category: 'Perennials',
+      category: 'Perennials' as PermacultureCategory,
       title: 'Food Forest Layers',
       description: 'Stack functions: canopy trees, understory, shrubs, herbaceous, ground cover, root crops, and vines create a productive ecosystem.'
     }

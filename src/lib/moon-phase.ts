@@ -3,8 +3,7 @@
  * Provides moon phase determination and display helpers
  */
 
-export type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' |
-                        'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent';
+import { MoonPhase } from '@/types/calendar';
 
 /**
  * Calculate moon phase for a given date
@@ -20,11 +19,11 @@ export function calculateMoonPhase(date: Date): MoonPhase {
   const phase = ((days % lunarCycle) + lunarCycle) % lunarCycle;
 
   // Determine phase name based on position in cycle
-  if (phase < 1.84566) return 'New Moon';
+  if (phase < 1.84566) return 'New';
   if (phase < 7.38264) return 'Waxing Crescent';
   if (phase < 9.22830) return 'First Quarter';
   if (phase < 14.76528) return 'Waxing Gibbous';
-  if (phase < 16.61094) return 'Full Moon';
+  if (phase < 16.61094) return 'Full';
   if (phase < 22.14792) return 'Waning Gibbous';
   if (phase < 23.99358) return 'Last Quarter';
   return 'Waning Crescent';
@@ -35,11 +34,11 @@ export function calculateMoonPhase(date: Date): MoonPhase {
  */
 export function getMoonEmoji(phase: MoonPhase): string {
   const emojiMap: Record<MoonPhase, string> = {
-    'New Moon': '🌑',
+    'New': '🌑',
     'Waxing Crescent': '🌒',
     'First Quarter': '🌓',
     'Waxing Gibbous': '🌔',
-    'Full Moon': '🌕',
+    'Full': '🌕',
     'Waning Gibbous': '🌖',
     'Last Quarter': '🌗',
     'Waning Crescent': '🌘'
@@ -67,11 +66,11 @@ export function isWaning(phase: MoonPhase): boolean {
  */
 export function getMoonPlantingAdvice(phase: MoonPhase): string {
   const advice: Record<MoonPhase, string> = {
-    'New Moon': 'Rest period. Good for planning and soil preparation.',
+    'New': 'Rest period. Good for planning and soil preparation.',
     'Waxing Crescent': 'Excellent for sowing leafy annuals and grains.',
     'First Quarter': 'Ideal for planting above-ground crops that produce seeds outside fruit.',
     'Waxing Gibbous': 'Best time for planting crops that produce seeds inside fruit.',
-    'Full Moon': 'Peak energy. Good for transplanting and watering.',
+    'Full': 'Peak energy. Good for transplanting and watering.',
     'Waning Gibbous': 'Plant root crops and perennials.',
     'Last Quarter': 'Focus on pruning, harvesting, and composting.',
     'Waning Crescent': 'Rest and observe. Minimal disturbance to plants.'

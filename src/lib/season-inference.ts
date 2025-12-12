@@ -4,18 +4,7 @@
  */
 
 import { UserProfile } from '@/types/profile';
-
-export type SeasonalMode =
-  | 'Winter Planning'
-  | 'Spring Preparation'
-  | 'Seed Starting'
-  | 'Transplanting'
-  | 'Active Growth'
-  | 'Heat Management'
-  | 'Harvest Season'
-  | 'Fall Planting'
-  | 'Cover Cropping'
-  | 'Winter Dormancy';
+import { SeasonalMode } from '@/types/calendar';
 
 /**
  * Infer current seasonal mode based on profile and date
@@ -37,17 +26,14 @@ export function inferSeasonalMode(profile: UserProfile, date: Date): SeasonalMod
   if (adjustedMonth === 11 || adjustedMonth === 0 || adjustedMonth === 1) {
     // Dec, Jan, Feb (Northern winter)
     if (isColdClimate) {
-      return 'Winter Planning';
+      return 'Dormancy';
     } else if (isWarmClimate) {
-      return 'Active Growth';
+      return 'Succession Planting';
     }
-    return 'Winter Dormancy';
+    return 'Dormancy';
   } else if (adjustedMonth === 2 || adjustedMonth === 3) {
     // Mar, Apr (Northern spring)
-    if (isColdClimate) {
-      return 'Seed Starting';
-    }
-    return 'Spring Preparation';
+    return 'Seed Starting';
   } else if (adjustedMonth === 4 || adjustedMonth === 5) {
     // May, Jun (Northern late spring/early summer)
     return 'Transplanting';
@@ -56,16 +42,13 @@ export function inferSeasonalMode(profile: UserProfile, date: Date): SeasonalMod
     if (climate.avgSummerHigh && climate.avgSummerHigh > 85) {
       return 'Heat Management';
     }
-    return 'Active Growth';
+    return 'Succession Planting';
   } else if (adjustedMonth === 8 || adjustedMonth === 9) {
     // Sep, Oct (Northern fall)
-    return 'Harvest Season';
+    return 'Harvest';
   } else {
     // Nov (Northern late fall)
-    if (isColdClimate) {
-      return 'Cover Cropping';
-    }
-    return 'Fall Planting';
+    return 'Cover Cropping';
   }
 }
 
@@ -74,16 +57,13 @@ export function inferSeasonalMode(profile: UserProfile, date: Date): SeasonalMod
  */
 export function getSeasonalModeDescription(mode: SeasonalMode): string {
   const descriptions: Record<SeasonalMode, string> = {
-    'Winter Planning': 'Time for planning next season, ordering seeds, and studying garden design.',
-    'Spring Preparation': 'Prepare beds, amend soil, and get ready for planting season.',
     'Seed Starting': 'Start seeds indoors for transplanting after last frost.',
     'Transplanting': 'Move seedlings outdoors and direct sow warm-season crops.',
-    'Active Growth': 'Maintain gardens with regular watering, weeding, and pest management.',
+    'Succession Planting': 'Plant crops in stages for continuous harvest throughout the season.',
     'Heat Management': 'Protect plants from heat stress, provide shade, and ensure adequate water.',
-    'Harvest Season': 'Harvest mature crops, preserve food, and save seeds.',
-    'Fall Planting': 'Plant cool-season crops and perennials for fall/winter harvest.',
+    'Harvest': 'Harvest mature crops, preserve food, and save seeds.',
     'Cover Cropping': 'Plant cover crops to protect and enrich soil over winter.',
-    'Winter Dormancy': 'Light maintenance, mulching, and protecting plants from cold.'
+    'Dormancy': 'Light maintenance, mulching, protecting plants, and planning next season.'
   };
 
   return descriptions[mode];
@@ -94,18 +74,6 @@ export function getSeasonalModeDescription(mode: SeasonalMode): string {
  */
 export function getSeasonalPriorities(mode: SeasonalMode): string[] {
   const priorities: Record<SeasonalMode, string[]> = {
-    'Winter Planning': [
-      'Review last season notes',
-      'Order seeds and supplies',
-      'Design garden layout',
-      'Clean and sharpen tools'
-    ],
-    'Spring Preparation': [
-      'Test and amend soil',
-      'Build or repair beds',
-      'Set up irrigation',
-      'Start compost piles'
-    ],
     'Seed Starting': [
       'Start seeds indoors',
       'Harden off seedlings',
@@ -118,11 +86,11 @@ export function getSeasonalPriorities(mode: SeasonalMode): string[] {
       'Mulch beds',
       'Install supports'
     ],
-    'Active Growth': [
+    'Succession Planting': [
+      'Plant quick crops every 2 weeks',
       'Water consistently',
       'Weed regularly',
-      'Monitor pests',
-      'Side-dress with compost'
+      'Monitor pests'
     ],
     'Heat Management': [
       'Provide afternoon shade',
@@ -130,17 +98,11 @@ export function getSeasonalPriorities(mode: SeasonalMode): string[] {
       'Apply mulch heavily',
       'Harvest early morning'
     ],
-    'Harvest Season': [
+    'Harvest': [
       'Harvest at peak ripeness',
       'Preserve and store',
       'Save seeds',
       'Remove spent plants'
-    ],
-    'Fall Planting': [
-      'Plant garlic and onions',
-      'Sow cool-season greens',
-      'Plant cover crops',
-      'Divide perennials'
     ],
     'Cover Cropping': [
       'Sow winter cover crops',
@@ -148,7 +110,7 @@ export function getSeasonalPriorities(mode: SeasonalMode): string[] {
       'Protect tender plants',
       'Build soil structure'
     ],
-    'Winter Dormancy': [
+    'Dormancy': [
       'Mulch heavily',
       'Protect from freeze',
       'Prune dormant trees',
@@ -164,11 +126,11 @@ export function getSeasonalPriorities(mode: SeasonalMode): string[] {
  */
 export function isGoodTimeFor(mode: SeasonalMode, activity: string): boolean {
   const goodTimes: Record<string, SeasonalMode[]> = {
-    'planting': ['Spring Preparation', 'Seed Starting', 'Transplanting', 'Fall Planting'],
-    'harvesting': ['Active Growth', 'Harvest Season'],
-    'pruning': ['Winter Dormancy', 'Winter Planning'],
-    'soil_work': ['Spring Preparation', 'Fall Planting', 'Cover Cropping'],
-    'transplanting': ['Transplanting', 'Fall Planting']
+    'planting': ['Seed Starting', 'Transplanting', 'Succession Planting'],
+    'harvesting': ['Harvest', 'Succession Planting'],
+    'pruning': ['Dormancy'],
+    'soil_work': ['Cover Cropping', 'Dormancy'],
+    'transplanting': ['Transplanting']
   };
 
   return goodTimes[activity]?.includes(mode) ?? false;

@@ -1,0 +1,10 @@
+{
+  "extends": ["next"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/self-closing-comp": "warn",
+    "no-alert": "warn",
+    "radix": "warn",
+    "no-bitwise": "warn"
+  }
+}
