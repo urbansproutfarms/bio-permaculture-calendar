@@ -20,8 +20,8 @@ const GROWING_SPACES: GrowingSpace[] = [
   'Food Forest',
 ];
 
-const SUN_EXPOSURES: SunExposure[] = ['Full Sun', 'Partial Sun', 'Shade'];
-const SOIL_TYPES: SoilType[] = ['Clay', 'Sandy', 'Loam', 'Rocky', 'Unknown'];
+const SUN_EXPOSURES: (SunExposure | 'Not sure')[] = ['Full Sun', 'Partial Sun', 'Shade', 'Not sure'];
+const SOIL_TYPES: (SoilType | 'Not sure')[] = ['Clay', 'Sandy', 'Loam', 'Rocky', 'Unknown', 'Not sure'];
 const WATER_ACCESSES: WaterAccess[] = ['Rainwater', 'Irrigation', 'Limited'];
 
 export default function GardenStep({ initialData, onNext, onBack }: GardenStepProps) {
@@ -44,21 +44,33 @@ export default function GardenStep({ initialData, onNext, onBack }: GardenStepPr
   const growingSpace = watch('growingSpace') || [];
   const waterAccess = watch('waterAccess') || [];
 
+  const handleSkip = () => {
+    onNext({
+      growingSpace: [],
+      sunExposure: undefined,
+      soilType: undefined,
+      waterAccess: []
+    });
+  };
+
   return (
     <form onSubmit={handleSubmit(onNext)} className="space-y-6">
       <div>
         <h2 className="text-xl font-semibold text-green-900 mb-2">
           Tell us about your growing space
         </h2>
-        <p className="text-sm text-green-700 mb-6">
+        <p className="text-sm text-green-700 mb-2">
           Understanding your garden setup helps personalize recommendations
+        </p>
+        <p className="text-xs text-green-600 italic mb-4">
+          Optional... skip anything you're not sure about. You can edit this later in Settings.
         </p>
       </div>
 
       {/* Growing Space */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">
-          Growing Space * (Select all that apply)
+          Growing Space <span className="text-gray-500 font-normal">(Optional - Select all that apply)</span>
         </label>
         <div className="grid grid-cols-2 gap-3">
           {GROWING_SPACES.map((space) => (
@@ -94,17 +106,18 @@ export default function GardenStep({ initialData, onNext, onBack }: GardenStepPr
       {/* Sun Exposure */}
       <div>
         <label htmlFor="sunExposure" className="block text-sm font-medium text-gray-700 mb-1">
-          Sun Exposure *
+          Sun Exposure <span className="text-gray-500 font-normal">(Optional)</span>
         </label>
         <select
           {...register('sunExposure')}
           id="sunExposure"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
         >
           <option value="">Select...</option>
-          {SUN_EXPOSURES.map(exposure => (
-            <option key={exposure} value={exposure}>{exposure}</option>
-          ))}
+          <option value="Full Sun">Full Sun (6+ hours direct)</option>
+          <option value="Partial Sun">Partial Sun (3-6 hours)</option>
+          <option value="Shade">Shade (&lt; 3 hours)</option>
+          <option value="Not sure">Not sure</option>
         </select>
         {errors.sunExposure && (
           <p className="mt-1 text-sm text-red-600">{errors.sunExposure.message}</p>
@@ -114,17 +127,20 @@ export default function GardenStep({ initialData, onNext, onBack }: GardenStepPr
       {/* Soil Type */}
       <div>
         <label htmlFor="soilType" className="block text-sm font-medium text-gray-700 mb-1">
-          Soil Type *
+          Soil Type <span className="text-gray-500 font-normal">(Optional)</span>
         </label>
         <select
           {...register('soilType')}
           id="soilType"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
         >
           <option value="">Select...</option>
-          {SOIL_TYPES.map(type => (
-            <option key={type} value={type}>{type}</option>
-          ))}
+          <option value="Clay">Clay (heavy, holds water)</option>
+          <option value="Sandy">Sandy (light, drains fast)</option>
+          <option value="Loam">Loam (balanced, ideal)</option>
+          <option value="Rocky">Rocky</option>
+          <option value="Unknown">Unknown</option>
+          <option value="Not sure">Not sure</option>
         </select>
         {errors.soilType && (
           <p className="mt-1 text-sm text-red-600">{errors.soilType.message}</p>
@@ -134,7 +150,7 @@ export default function GardenStep({ initialData, onNext, onBack }: GardenStepPr
       {/* Water Access */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-3">
-          Water Access * (Select all that apply)
+          Water Access <span className="text-gray-500 font-normal">(Optional - Select all that apply)</span>
         </label>
         <div className="space-y-2">
           {WATER_ACCESSES.map((access) => (
@@ -175,12 +191,21 @@ export default function GardenStep({ initialData, onNext, onBack }: GardenStepPr
         >
           Back
         </button>
-        <button
-          type="submit"
-          className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-        >
-          Next
-        </button>
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={handleSkip}
+            className="px-6 py-2 border border-green-300 text-green-700 rounded-lg hover:bg-green-50 transition-colors"
+          >
+            Skip
+          </button>
+          <button
+            type="submit"
+            className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </form>
   );

@@ -38,7 +38,7 @@ export const climateSchema = z.object({
   firstFallFrost: z.date().nullable().optional(),
 });
 
-// Step 3: Garden Setup Schema
+// Step 3: Garden Setup Schema - ALL OPTIONAL
 export const gardenSchema = z.object({
   growingSpace: z.array(z.enum([
     'Containers',
@@ -48,8 +48,8 @@ export const gardenSchema = z.object({
     'Balcony',
     'Food Forest'
   ])).optional().default([]),
-  sunExposure: z.enum(['Full Sun', 'Partial Sun', 'Shade']).optional(),
-  soilType: z.enum(['Clay', 'Sandy', 'Loam', 'Rocky', 'Unknown']).optional(),
+  sunExposure: z.enum(['Full Sun', 'Partial Sun', 'Shade', 'Not sure']).optional(),
+  soilType: z.enum(['Clay', 'Sandy', 'Loam', 'Rocky', 'Unknown', 'Not sure']).optional(),
   waterAccess: z.array(z.enum(['Rainwater', 'Irrigation', 'Limited'])).optional().default([]),
 });
 

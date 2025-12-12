@@ -61,8 +61,8 @@ export type GrowingSpace =
   | 'Balcony'
   | 'Food Forest';
 
-export type SunExposure = 'Full Sun' | 'Partial Sun' | 'Shade';
-export type SoilType = 'Clay' | 'Sandy' | 'Loam' | 'Rocky' | 'Unknown';
+export type SunExposure = 'Full Sun' | 'Partial Sun' | 'Shade' | 'Not sure';
+export type SoilType = 'Clay' | 'Sandy' | 'Loam' | 'Rocky' | 'Unknown' | 'Not sure';
 export type WaterAccess = 'Rainwater' | 'Irrigation' | 'Limited';
 export type TimeAvailable = '10 min/day' | '30 min/day' | 'Weekends';
 
