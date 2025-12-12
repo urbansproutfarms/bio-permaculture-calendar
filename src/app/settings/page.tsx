@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Storage } from '@/lib/storage';
 import { UserProfile } from '@/types/profile';
+import LanguageSelector from '@/components/LanguageSelector';
 
 export default function SettingsPage() {
+  const t = useTranslations('settings');
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -103,9 +106,48 @@ export default function SettingsPage() {
       </header>
 
       <div className="container mx-auto max-w-4xl p-4 md:p-8 space-y-6">
+        {/* Language Selector */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">{t('language')}</h2>
+          <div className="flex items-center gap-4">
+            <span className="text-gray-700">{t('languageSelector')}:</span>
+            <LanguageSelector />
+          </div>
+          <p className="mt-3 text-sm text-gray-600">
+            Select your preferred language. The interface will update immediately.
+          </p>
+        </div>
+
+        {/* Advanced Mode Toggle */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">Display Mode</h2>
+          <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+            <div>
+              <h3 className="font-medium text-gray-900">{t('advancedMode')}</h3>
+              <p className="text-sm text-gray-600">{t('advancedModeDesc')}</p>
+            </div>
+            <button
+              onClick={() => {
+                const updated = { ...profile!, advancedMode: !profile!.advancedMode };
+                Storage.saveProfile(updated);
+                setProfile(updated);
+              }}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                profile?.advancedMode ? 'bg-green-600' : 'bg-gray-300'
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  profile?.advancedMode ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
+          </div>
+        </div>
+
         {/* Profile Summary */}
         <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Your Profile</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-4">{t('profile')}</h2>
 
           <div className="grid md:grid-cols-2 gap-4 text-sm">
             <div>
@@ -150,7 +192,7 @@ export default function SettingsPage() {
               onClick={() => router.push('/onboarding')}
               className="px-6 py-2 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors"
             >
-              Edit Profile
+              {t('editProfile')}
             </button>
           </div>
         </div>
@@ -172,7 +214,7 @@ export default function SettingsPage() {
                 onClick={handleExportData}
                 className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
               >
-                Export
+                {t('export')}
               </button>
             </div>
 
@@ -185,7 +227,7 @@ export default function SettingsPage() {
                 </p>
               </div>
               <label className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors cursor-pointer">
-                Import
+                {t('import')}
                 <input
                   type="file"
                   accept=".json"

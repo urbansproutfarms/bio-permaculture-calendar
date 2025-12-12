@@ -1,47 +1,47 @@
 {
   "common": {
-    "next": "Next",
-    "back": "Back",
-    "skip": "Skip",
-    "save": "Save",
-    "cancel": "Cancel",
-    "edit": "Edit",
-    "delete": "Delete",
-    "optional": "(Optional)",
-    "required": "(Required)",
-    "notSure": "Not sure",
-    "loading": "Loading..."
+    "next": "Siguiente",
+    "back": "Atrás",
+    "skip": "Omitir",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "optional": "(Opcional)",
+    "required": "(Requerido)",
+    "notSure": "No estoy seguro",
+    "loading": "Cargando..."
   },
   "nav": {
-    "home": "Home",
-    "dashboard": "Dashboard",
-    "calendar": "Calendar",
-    "journal": "Journal",
-    "settings": "Settings"
+    "home": "Inicio",
+    "dashboard": "Panel",
+    "calendar": "Calendario",
+    "journal": "Diario",
+    "settings": "Configuración"
   },
   "welcome": {
-    "title": "Welcome to BioPermaculture Calendar",
-    "subtitle": "Your personalized biodynamic gardening companion",
-    "getStarted": "Get Started",
-    "learnMore": "Learn More"
+    "title": "Bienvenido al Calendario BioPermacultura",
+    "subtitle": "Tu compañero personalizado de jardinería biodinámica",
+    "getStarted": "Comenzar",
+    "learnMore": "Aprender Más"
   },
   "onboarding": {
-    "title": "Set Up Your Garden Profile",
-    "subtitle": "We'll customize recommendations based on your location and goals",
-    "step": "Step {current} of {total}",
+    "title": "Configura tu Perfil de Jardín",
+    "subtitle": "Personalizaremos las recomendaciones según tu ubicación y objetivos",
+    "step": "Paso {current} de {total}",
     "location": {
-      "title": "Where are you gardening?",
-      "subtitle": "We'll use this to provide climate-specific guidance",
-      "country": "Country",
-      "state": "State/Province",
-      "city": "City",
-      "latitude": "Latitude",
-      "longitude": "Longitude",
-      "countryPlaceholder": "Select your country",
-      "statePlaceholder": "Enter your state",
-      "cityPlaceholder": "Enter your city",
+      "title": "¿Dónde estás cultivando?",
+      "subtitle": "Usaremos esto para proporcionar orientación específica del clima",
+      "country": "País",
+      "state": "Estado/Provincia",
+      "city": "Ciudad",
+      "latitude": "Latitud",
+      "longitude": "Longitud",
+      "countryPlaceholder": "Selecciona tu país",
+      "statePlaceholder": "Ingresa tu estado",
+      "cityPlaceholder": "Ingresa tu ciudad",
       "errors": {
-        "countryRequired": "Country is required"
+        "countryRequired": "El país es requerido"
       }
     },
     "climate": {
@@ -86,80 +86,80 @@
       }
     },
     "garden": {
-      "title": "Tell us about your growing space",
-      "subtitle": "Understanding your garden setup helps personalize recommendations",
-      "hint": "Optional... skip anything you're not sure about. You can edit this later in Settings.",
-      "growingSpace": "Growing Space",
-      "growingSpaceHint": "(Optional - Select all that apply)",
-      "sunExposure": "Sun Exposure",
-      "soilType": "Soil Type",
-      "waterAccess": "Water Access",
-      "waterAccessHint": "(Optional - Select all that apply)",
+      "title": "Cuéntanos sobre tu espacio de cultivo",
+      "subtitle": "Comprender la configuración de tu jardín ayuda a personalizar las recomendaciones",
+      "hint": "Opcional... omite cualquier cosa de la que no estés seguro. Puedes editar esto más tarde en Configuración.",
+      "growingSpace": "Espacio de Cultivo",
+      "growingSpaceHint": "(Opcional - Selecciona todas las que apliquen)",
+      "sunExposure": "Exposición al Sol",
+      "soilType": "Tipo de Suelo",
+      "waterAccess": "Acceso al Agua",
+      "waterAccessHint": "(Opcional - Selecciona todas las que apliquen)",
       "growingSpaces": {
-        "Containers": "Containers",
-        "RaisedBeds": "Raised Beds",
-        "InGround": "In-Ground",
-        "Greenhouse": "Greenhouse",
-        "Balcony": "Balcony",
-        "FoodForest": "Food Forest"
+        "Containers": "Contenedores",
+        "RaisedBeds": "Camas Elevadas",
+        "InGround": "En el Suelo",
+        "Greenhouse": "Invernadero",
+        "Balcony": "Balcón",
+        "FoodForest": "Bosque de Alimentos"
       },
       "sunExposures": {
-        "FullSun": "Full Sun (6+ hours direct)",
-        "PartialSun": "Partial Sun (3-6 hours)",
-        "Shade": "Shade (< 3 hours)",
-        "NotSure": "Not sure"
+        "FullSun": "Sol Completo (6+ horas directas)",
+        "PartialSun": "Sol Parcial (3-6 horas)",
+        "Shade": "Sombra (< 3 horas)",
+        "NotSure": "No estoy seguro"
       },
       "soilTypes": {
-        "Clay": "Clay (heavy, holds water)",
-        "Sandy": "Sandy (light, drains fast)",
-        "Loam": "Loam (balanced, ideal)",
-        "Rocky": "Rocky",
-        "Unknown": "Unknown",
-        "NotSure": "Not sure"
+        "Clay": "Arcilla (pesado, retiene agua)",
+        "Sandy": "Arenoso (ligero, drena rápido)",
+        "Loam": "Franco (equilibrado, ideal)",
+        "Rocky": "Rocoso",
+        "Unknown": "Desconocido",
+        "NotSure": "No estoy seguro"
       },
       "waterAccesses": {
-        "Rainwater": "Rainwater",
-        "Irrigation": "Irrigation",
-        "Limited": "Limited"
+        "Rainwater": "Agua de Lluvia",
+        "Irrigation": "Riego",
+        "Limited": "Limitado"
       }
     },
     "goals": {
-      "title": "What are your gardening goals?",
-      "subtitle": "We'll tailor your calendar to match your interests",
-      "timeAvailable": "Time Available",
-      "goals": "Goals",
-      "goalsHint": "(Select all that apply)",
-      "experienceLevel": "Experience Level",
-      "topCrops": "Favorite Crops",
-      "topCropsHint": "Enter crops you'd like to grow",
-      "addCrop": "Add crop",
-      "constraints": "Constraints",
-      "constraintsHint": "(Select up to 5)",
+      "title": "¿Cuáles son tus objetivos de jardinería?",
+      "subtitle": "Adaptaremos tu calendario para que coincida con tus intereses",
+      "timeAvailable": "Tiempo Disponible",
+      "goals": "Objetivos",
+      "goalsHint": "(Selecciona todas las que apliquen)",
+      "experienceLevel": "Nivel de Experiencia",
+      "topCrops": "Cultivos Favoritos",
+      "topCropsHint": "Ingresa los cultivos que te gustaría cultivar",
+      "addCrop": "Agregar cultivo",
+      "constraints": "Restricciones",
+      "constraintsHint": "(Selecciona hasta 5)",
       "timeOptions": {
         "10min": "10 min/day",
         "30min": "30 min/day",
         "Weekends": "Weekends"
       },
       "goalOptions": {
-        "Vegetables": "Vegetables",
-        "Herbs": "Herbs",
-        "Flowers": "Flowers",
-        "FruitTrees": "Fruit Trees",
-        "LandscapePlanning": "Landscape Planning",
-        "All": "All"
+        "Vegetables": "Verduras",
+        "Herbs": "Hierbas",
+        "Flowers": "Flores",
+        "FruitTrees": "Árboles Frutales",
+        "LandscapePlanning": "Planificación de Paisaje",
+        "All": "Todo"
       },
       "experienceLevels": {
-        "Beginner": "Beginner",
-        "Intermediate": "Intermediate",
-        "Advanced": "Advanced"
+        "Beginner": "Principiante",
+        "Intermediate": "Intermedio",
+        "Advanced": "Avanzado"
       },
       "cropCategories": {
-        "RootCrops": "Root Crops",
-        "LeafCrops": "Leaf Crops",
-        "FlowerCrops": "Flower Crops",
-        "FruitCrops": "Fruit Crops"
+        "RootCrops": "Cultivos de Raíz",
+        "LeafCrops": "Cultivos de Hoja",
+        "FlowerCrops": "Cultivos de Flor",
+        "FruitCrops": "Cultivos de Fruto"
       },
-      "createCalendar": "Create My Calendar"
+      "createCalendar": "Crear Mi Calendario"
     }
   },
   "dashboard": {
@@ -192,41 +192,41 @@
     "saveEntry": "Save Entry"
   },
   "settings": {
-    "title": "Settings",
-    "profile": "Profile",
-    "language": "Language",
-    "notifications": "Notifications",
-    "export": "Export Profile",
-    "import": "Import Profile",
-    "editProfile": "Edit Profile",
-    "languageSelector": "Select Language",
-    "advancedMode": "Advanced Mode",
-    "advancedModeDesc": "Show detailed biodynamic guidance and technical information",
-    "starterMode": "Starter Mode",
-    "starterModeDesc": "Simplified interface with basic guidance"
+    "title": "Configuración",
+    "profile": "Perfil",
+    "language": "Idioma",
+    "notifications": "Notificaciones",
+    "export": "Exportar Perfil",
+    "import": "Importar Perfil",
+    "editProfile": "Editar Perfil",
+    "languageSelector": "Seleccionar Idioma",
+    "advancedMode": "Modo Avanzado",
+    "advancedModeDesc": "Mostrar orientación biodinámica detallada e información técnica",
+    "starterMode": "Modo Inicial",
+    "starterModeDesc": "Interfaz simplificada con orientación básica"
   },
   "biodynamic": {
     "moonPhases": {
-      "New": "New Moon",
-      "WaxingCrescent": "Waxing Crescent",
-      "FirstQuarter": "First Quarter",
-      "WaxingGibbous": "Waxing Gibbous",
-      "Full": "Full Moon",
-      "WaningGibbous": "Waning Gibbous",
-      "LastQuarter": "Last Quarter",
-      "WaningCrescent": "Waning Crescent"
+      "New": "Luna Nueva",
+      "WaxingCrescent": "Cuarto Creciente",
+      "FirstQuarter": "Cuarto Creciente",
+      "WaxingGibbous": "Gibosa Creciente",
+      "Full": "Luna Llena",
+      "WaningGibbous": "Gibosa Menguante",
+      "LastQuarter": "Cuarto Menguante",
+      "WaningCrescent": "Menguante"
     },
     "dayTypes": {
-      "Root": "Root Day",
-      "Flower": "Flower Day",
-      "Leaf": "Leaf Day",
-      "Fruit": "Fruit Day"
+      "Root": "Día de Raíz",
+      "Flower": "Día de Flor",
+      "Leaf": "Día de Hoja",
+      "Fruit": "Día de Fruto"
     },
     "guidance": {
-      "Root": "Ideal for planting and tending root crops (carrots, beets, potatoes)",
-      "Flower": "Best for flowering plants (broccoli, cauliflower, ornamentals)",
-      "Leaf": "Perfect for leafy greens (lettuce, spinach, herbs)",
-      "Fruit": "Great for fruiting plants (tomatoes, peppers, squash)"
+      "Root": "Ideal para plantar y cuidar cultivos de raíz (zanahorias, remolachas, papas)",
+      "Flower": "Mejor para plantas con flores (brócoli, coliflor, ornamentales)",
+      "Leaf": "Perfecto para verduras de hoja (lechuga, espinaca, hierbas)",
+      "Fruit": "Excelente para plantas de fruto (tomates, pimientos, calabaza)"
     }
   },
   "errors": {
