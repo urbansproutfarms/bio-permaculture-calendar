@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 import { locationSchema, LocationFormData } from '@/schemas/onboarding';
 import { UserProfile } from '@/types/profile';
 
@@ -11,6 +12,9 @@ interface LocationStepProps {
 }
 
 export default function LocationStep({ initialData, onNext }: LocationStepProps) {
+  const t = useTranslations('onboarding.location');
+  const tCommon = useTranslations('common');
+
   const {
     register,
     handleSubmit,
@@ -24,24 +28,27 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
     <form onSubmit={handleSubmit(onNext)} className="space-y-6">
       <div>
         <h2 className="text-xl font-semibold text-green-900 mb-2">
-          Where are you gardening?
+          {t('title')}
         </h2>
-        <p className="text-sm text-green-700 mb-6">
-          This helps us customize recommendations for your climate and season
+        <p className="text-sm text-green-700 mb-2">
+          {t('subtitle')}
+        </p>
+        <p className="text-xs text-green-600 italic">
+          You can edit this later in Settings.
         </p>
       </div>
 
       {/* Country */}
       <div>
         <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
-          Country *
+          {t('country')} <span className="text-red-600">*</span>
         </label>
         <select
           {...register('country')}
           id="country"
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
         >
-          <option value="">Select your country</option>
+          <option value="">{t('countryPlaceholder')}</option>
           <option value="United States">United States</option>
           <option value="Canada">Canada</option>
           <option value="United Kingdom">United Kingdom</option>
@@ -78,13 +85,13 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
       {/* State/Province */}
       <div>
         <label htmlFor="state" className="block text-sm font-medium text-gray-700 mb-1">
-          State/Province/Region (Optional)
+          {t('state')} <span className="text-gray-500 font-normal">{tCommon('optional')}</span>
         </label>
         <input
           {...register('state')}
           type="text"
           id="state"
-          placeholder="e.g., California, Ontario, etc."
+          placeholder={t('statePlaceholder')}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
       </div>
@@ -92,13 +99,13 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
       {/* City */}
       <div>
         <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
-          City (Optional)
+          {t('city')} <span className="text-gray-500 font-normal">{tCommon('optional')}</span>
         </label>
         <input
           {...register('city')}
           type="text"
           id="city"
-          placeholder="e.g., San Francisco"
+          placeholder={t('cityPlaceholder')}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
         />
       </div>
@@ -107,7 +114,7 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="latitude" className="block text-sm font-medium text-gray-700 mb-1">
-            Latitude (Optional)
+            {t('latitude')} <span className="text-gray-500 font-normal">{tCommon('optional')}</span>
           </label>
           <input
             {...register('latitude', { valueAsNumber: true })}
@@ -120,7 +127,7 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
         </div>
         <div>
           <label htmlFor="longitude" className="block text-sm font-medium text-gray-700 mb-1">
-            Longitude (Optional)
+            {t('longitude')} <span className="text-gray-500 font-normal">{tCommon('optional')}</span>
           </label>
           <input
             {...register('longitude', { valueAsNumber: true })}
@@ -138,7 +145,7 @@ export default function LocationStep({ initialData, onNext }: LocationStepProps)
           type="submit"
           className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
         >
-          Next
+          {tCommon('next')}
         </button>
       </div>
     </form>

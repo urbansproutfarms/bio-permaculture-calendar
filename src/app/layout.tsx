@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { isRTL } from '@/i18n/config';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -23,9 +24,11 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={isRTL(locale as any) ? 'rtl' : 'ltr'}>
       <body className={inter.className}>
-        <NextIntlClientProvider messages={messages} locale={locale}>
-          {children}
-        </NextIntlClientProvider>
+        <ErrorBoundary>
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            {children}
+          </NextIntlClientProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
