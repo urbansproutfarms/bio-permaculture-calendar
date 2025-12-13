@@ -18,12 +18,11 @@ export default function LanguageSelector() {
     // Remove current locale prefix from pathname
     const pathnameWithoutLocale = pathname.replace(`/${locale}`, '') || '/';
 
-    // Navigate to new locale
-    const newPath = newLocale === 'en'
-      ? pathnameWithoutLocale
-      : `/${newLocale}${pathnameWithoutLocale}`;
+    // Navigate to new locale (always include locale prefix)
+    const newPath = `/${newLocale}${pathnameWithoutLocale}`;
 
     router.push(newPath);
+    router.refresh();
   };
 
   return (
